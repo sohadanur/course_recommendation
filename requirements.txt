@@ -1,0 +1,10 @@
+flask
+pandas
+numpy
+neattext
+seaborn
+scikit-learn
+fuzzywuzzy
+python-Levenshtein
+matplotlib
+nltk
