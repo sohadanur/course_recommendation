@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            background-color: #f0f0f5;
+            font-family: Arial, sans-serif;
+            color: #4b4b4d;
+        }
+        h1 {
+            color: #6a4c9c;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section h3 {
+            color: #6a4c9c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Dashboard</h1>
+        <div class="section">
+            <h3>Value Counts</h3>
+            <ul>
+                {% for key, value in value_counts.items() %}
+                    <li>{{ key }}: {{ value }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="section">
+            <h3>Level Counts</h3>
+            <ul>
+                {% for key, value in level_counts.items() %}
+                    <li>{{ key }}: {{ value }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="section">
+            <h3>Subjects per Level</h3>
+            <ul>
+                {% for key, value in subjects_per_level.items() %}
+                    <li>{{ key }}: {{ value }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="section">
+            <h3>Yearly Profit</h3>
+            <ul>
+                {% for key, value in yearwise_profit.items() %}
+                    <li>{{ key }}: ${{ value }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
