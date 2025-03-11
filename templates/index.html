@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Recommendation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color:rgb(8, 7, 8);
+            margin-bottom: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solidrgb(37, 8, 58);
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color:rgb(43, 6, 70);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+        }
+        input[type="submit"]:hover {
+            background-color:rgb(29, 7, 48);
+        }
+        .recommendations {
+            margin-top: 20px;
+        }
+        .recommendation {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+        }
+        .recommendation h4 {
+            margin: 0;
+            color:rgb(43, 28, 54);
+        }
+        .recommendation p {
+            margin: 5px 0;
+        }
+        .recommendation a {
+            color:rgb(20, 10, 27);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .recommendation a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Enter The Name of the Course for Recommendations</h1>
+        <form method="POST">
+            <div class="form-group">
+                <input type="text" name="course" placeholder="Enter course title" required>
+            </div>
+            <input type="submit" value="Recommend">
+        </form>
+
+        {% if recommendations|length > 0 %}
+            <div class="recommendations">
+                <h2>Recommendations for Course "{{ recommendations[0]['course_title'] }}" are shown below</h2>
+                {% for course in recommendations %}
+                    <div class="recommendation">
+                        <h4>{{ course['course_title'] }}</h4>
+                        <a href="{{ course['url'] }}" target="_blank">View Course</a>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No recommendations found.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
